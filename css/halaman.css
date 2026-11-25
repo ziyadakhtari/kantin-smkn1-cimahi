@@ -1,0 +1,102 @@
+/* ============================================================
+   halaman.css  |  Header, hero, bagian beranda, footer
+   ============================================================ */
+
+/* ---------- Header ---------- */
+.header { position: sticky; top: 0; z-index: 50; background: var(--malam); border-bottom: 1px solid var(--garis); }
+.header-isi { display: flex; align-items: center; gap: 1rem; min-height: 68px; }
+.merek { display: flex; align-items: center; gap: .8rem; text-decoration: none; margin-right: auto; min-width: 0; }
+.merek-teks { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+.merek-teks strong { font-family: var(--font-judul); font-size: 1rem; font-weight: 600; color: var(--biru); }
+.merek-teks span   { font-size: .8125rem; color: var(--teks-isi); }
+
+/* Tempat logo sekolah. Ganti isinya dengan: <img src="aset/logo-smkn1-cimahi.png" alt="Logo SMK Negeri 1 Cimahi"> */
+.logo-slot {
+  flex: none; display: grid; place-items: center; width: 46px; height: 46px; overflow: hidden;
+  border: 1.5px dashed var(--garis-kuat); border-radius: var(--radius-kecil); color: var(--biru);
+}
+.logo-slot img { width: 100%; height: 100%; object-fit: contain; }
+.logo-slot svg { width: 24px; height: 24px; }
+
+.nav-utama { display: none; gap: .25rem; }
+.nav-utama a { padding: .5rem .9rem; font-family: var(--font-judul); font-size: .9375rem; font-weight: 500; color: var(--biru); text-decoration: none; border-radius: var(--radius-kecil); }
+.nav-utama a:hover { color: var(--jingga); }
+@media (min-width: 760px) { .nav-utama { display: flex; } }
+@media (max-width: 420px) { .merek-teks span { display: none; } }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; isolation: isolate; overflow: hidden; border-bottom: 1px solid var(--garis); }
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(rgba(9, 10, 16, .86), rgba(9, 10, 16, .86)), url("../aset/latar-kafe.webp") center / cover no-repeat;
+}
+.hero-isi {
+  display: grid; gap: 2.5rem; align-items: center;
+  padding-block: clamp(3rem, 8vw, 6.5rem);
+}
+@media (min-width: 900px) { .hero-isi { grid-template-columns: 1.15fr .85fr; gap: 3.5rem; } }
+.hero h1 { margin-bottom: .45em; }
+.hero .pengantar { margin-bottom: 1.75rem; }
+.aksi { display: flex; flex-wrap: wrap; gap: .75rem; }
+.hero .tiket { justify-self: start; width: 100%; }
+@media (min-width: 900px) { .hero .tiket { justify-self: end; } }
+.contoh-tiket { margin: .75rem 0 0; font-size: .875rem; }
+
+/* ---------- Pengumuman ---------- */
+.pengumuman { background: var(--jingga); color: var(--malam); font-family: var(--font-judul); font-weight: 600; font-size: .9375rem; }
+.pengumuman .wadah { padding-block: .65rem; }
+.pengumuman[hidden] { display: none; }
+
+/* ---------- Bagian ---------- */
+.seksi { padding-block: clamp(3.5rem, 8vw, 6rem); }
+.seksi + .seksi { border-top: 1px solid var(--garis); }
+.seksi-kepala { max-width: 40rem; margin-bottom: 2.25rem; }
+
+/* Langkah memesan: urutan nyata, jadi bernomor */
+.langkah { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: langkah; border: 1px solid var(--garis); border-radius: var(--radius-kartu); overflow: hidden; }
+@media (min-width: 760px) { .langkah { grid-template-columns: repeat(4, 1fr); } }
+.langkah li { padding: 1.5rem 1.4rem 1.7rem; counter-increment: langkah; border-top: 1px solid var(--garis); background: var(--permukaan); }
+.langkah li:first-child { border-top: 0; }
+@media (min-width: 760px) { .langkah li { border-top: 0; border-left: 1px solid var(--garis); } .langkah li:first-child { border-left: 0; } }
+.langkah li::before { content: counter(langkah); display: block; margin-bottom: 1rem; font-family: var(--font-judul); font-weight: 700; font-size: 2.25rem; line-height: 1; color: var(--jingga); }
+.langkah h3 { margin-bottom: .4em; }
+.langkah p  { margin: 0; font-size: .9375rem; line-height: 1.6; }
+
+/* Banner foto */
+.banner { position: relative; overflow: hidden; border: 1px solid var(--garis); border-radius: var(--radius-kartu); min-height: 340px; display: flex; align-items: flex-end; }
+.banner::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(9, 10, 16, .66), rgba(9, 10, 16, .66)), url("../aset/bar-kantin.webp") center / cover no-repeat; }
+.banner-isi {
+  position: relative; max-width: 36rem; padding: clamp(1.5rem, 4vw, 2.5rem);
+  background: var(--malam);                                   /* panel solid agar teks selalu terbaca */
+  border-top: 1px solid var(--garis); border-right: 1px solid var(--garis);
+  border-top-right-radius: var(--radius-kartu);
+}
+.banner-isi h2 { margin-bottom: .4em; }
+.banner-isi p { margin: 0; }
+
+/* Dua jalur daftar */
+.jalur { display: grid; gap: 1.1rem; }
+@media (min-width: 760px) { .jalur { grid-template-columns: 1fr 1fr; } }
+.jalur .kartu-isi { padding: 1.75rem; gap: .6rem; }
+.jalur .kartu-isi .tombol { align-self: flex-start; margin-top: 1rem; }
+
+/* ---------- Latar tekstur bata (login & daftar, tahap berikutnya) ---------- */
+.latar-bata { position: relative; isolation: isolate; }
+.latar-bata::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(9, 10, 16, .9), rgba(9, 10, 16, .9)), url("../aset/tekstur-bata.webp") center / cover no-repeat; }
+
+/* ---------- Footer ---------- */
+.footer { border-top: 1px solid var(--garis); padding-block: 2rem; font-size: .9375rem; }
+.footer .wadah { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 2rem; }
+.footer p { margin: 0; }
+
+/* ---------- Halaman uji tampilan ---------- */
+.contoh-warna { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.contoh-warna div { padding: 1.1rem; border: 1px solid var(--garis); border-radius: var(--radius-kartu); font-size: .9375rem; line-height: 1.5; }
+.contoh-warna b { display: block; font-family: var(--font-judul); margin-bottom: .25rem; }
+.sampel-hitam   { background: var(--malam); }
+.sampel-biru    { background: var(--biru); color: var(--malam); border-color: var(--biru) !important; }
+.sampel-jingga  { background: var(--jingga); color: var(--malam); border-color: var(--jingga) !important; }
+.sampel-biru b, .sampel-jingga b { color: var(--malam); }
+.baris { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+.jarak-atas { margin-top: 2rem; }
+.kolom-uji { max-width: 420px; }

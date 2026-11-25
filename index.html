@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090A10">
+  <title>Pelayanan Kantin SMK Negeri 1 Cimahi</title>
+  <meta name="description" content="Pesan makanan dan jajanan dari kantin SMK Negeri 1 Cimahi secara online, lalu ambil dengan nomor antrean.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tema.css">
+  <link rel="stylesheet" href="css/komponen.css">
+  <link rel="stylesheet" href="css/halaman.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="wadah header-isi">
+      <a class="merek" href="index.html" aria-label="Beranda Kantin SMK Negeri 1 Cimahi">
+        <!-- Tempat logo sekolah: ganti <svg> di bawah dengan
+             <img src="aset/logo-smkn1-cimahi.png" alt="Logo SMK Negeri 1 Cimahi"> -->
+        <span class="logo-slot" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
+        </span>
+        <span class="merek-teks">
+          <strong>Kantin SMKN 1 Cimahi</strong>
+          <span>Pesan online, ambil di kantin</span>
+        </span>
+      </a>
+      <nav class="nav-utama" aria-label="Menu utama">
+        <a href="#cara">Cara memesan</a>
+        <a href="#daftar">Daftar</a>
+      </nav>
+      <a class="tombol tombol-utama tombol-kecil" href="login.html">Masuk</a>
+    </div>
+  </header>
+
+  <!-- Diisi dari tabel pengumuman pada tahap berikutnya -->
+  <div class="pengumuman" id="pengumuman" hidden><div class="wadah" id="pengumuman-isi"></div></div>
+
+  <main>
+    <section class="hero">
+      <div class="wadah hero-isi">
+        <div>
+          <h1 data-judul>Pesan dari kelas, ambil tanpa menunggu.</h1>
+          <p class="pengantar">Pilih menu dari kantin SMK Negeri 1 Cimahi, dapatkan nomor antrean, lalu ambil dan bayar saat pesananmu siap.</p>
+          <div class="aksi">
+            <a class="tombol tombol-utama" href="login.html">Masuk</a>
+            <a class="tombol tombol-garis" href="daftar-pembeli.html">Daftar sebagai pembeli</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="tiket" role="img" aria-label="Contoh tiket nomor antrean 27, status siap diambil">
+            <div class="tiket-utama">
+              <p>Nomor antreanmu</p>
+              <p class="nama-kantin">Lapak contoh</p>
+              <span class="badge badge-siap">Siap diambil</span>
+            </div>
+            <div class="tiket-nomor"><span data-hitung="27">27</span></div>
+          </div>
+          <p class="kecil contoh-tiket">Contoh tampilan nomor antrean.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="seksi" id="cara">
+      <div class="wadah">
+        <div class="seksi-kepala">
+          <h2 data-judul>Empat langkah sampai pesanan di tangan</h2>
+        </div>
+        <ol class="langkah">
+          <li>
+            <h3>Pilih menu</h3>
+            <p>Lihat kantin yang sedang buka, cari menu, lalu masukkan ke keranjang.</p>
+          </li>
+          <li>
+            <h3>Kirim pesanan</h3>
+            <p>Tulis catatan seperti "tidak pedas", pilih bayar Cash atau QRIS, lalu kirim.</p>
+          </li>
+          <li>
+            <h3>Pantau antreanmu</h3>
+            <p>Nomor antrean muncul dan statusnya berubah sendiri di layar, tanpa refresh.</p>
+          </li>
+          <li>
+            <h3>Ambil dan bayar</h3>
+            <p>Saat status Siap diambil, datang ke kantin, sebutkan nomormu, lalu bayar di tempat.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="seksi">
+      <div class="wadah">
+        <div class="banner">
+          <div class="banner-isi">
+            <h2 data-judul>Satu akun untuk semua kantin sekolah</h2>
+            <p>Siswa, guru, dan pegawai memakai akun yang sama. Penjual mengelola menu, stok, dan pesanan langsung dari HP.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seksi" id="daftar">
+      <div class="wadah">
+        <div class="seksi-kepala">
+          <h2 data-judul>Mulai dari sini</h2>
+        </div>
+        <div class="jalur">
+          <article class="kartu" data-kartu>
+            <div class="kartu-isi">
+              <h3>Pembeli</h3>
+              <p>Untuk siswa, guru, dan pegawai sekolah. Akunmu langsung aktif setelah mendaftar.</p>
+              <a class="tombol tombol-utama" href="daftar-pembeli.html">Daftar sebagai pembeli</a>
+            </div>
+          </article>
+          <article class="kartu" data-kartu>
+            <div class="kartu-isi">
+              <h3>Penjual</h3>
+              <p>Untuk pemilik kantin atau lapak. Pendaftaranmu diperiksa pengelola dulu, lalu kamu bisa mulai berjualan.</p>
+              <a class="tombol tombol-garis" href="daftar-penjual.html">Daftar sebagai penjual</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wadah">
+      <p>Pelayanan Kantin SMK Negeri 1 Cimahi</p>
+      <p>Pesanan diambil dan dibayar langsung di kantin.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.18.2/dist/motion.js"></script>
+  <script src="js/animasi.js"></script>
+</body>
+</html>
