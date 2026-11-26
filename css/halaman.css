@@ -100,3 +100,56 @@
 .baris { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
 .jarak-atas { margin-top: 2rem; }
 .kolom-uji { max-width: 420px; }
+
+/* ============================================================
+   Tahap 4: halaman masuk/daftar dan kerangka dashboard
+   ============================================================ */
+.header-statis { position: static; }
+.header-pengguna { display: flex; align-items: center; gap: .75rem; font-size: .9375rem; }
+.header-pengguna [data-nama-pengguna] { max-width: 12ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 520px) { .header-pengguna [data-nama-pengguna] { display: none; } }
+
+/* Halaman dashboard disembunyikan sampai peran diperiksa */
+body.memeriksa main { visibility: hidden; }
+
+/* Halaman masuk/daftar */
+.auth-halaman { min-height: calc(100vh - 69px); display: grid; align-items: start; padding-block: clamp(2rem, 6vw, 4.5rem); }
+.auth-kartu { width: 100%; max-width: 480px; margin-inline: auto; padding: clamp(1.4rem, 4vw, 2.25rem); background: var(--malam); border: 1px solid var(--garis-kuat); border-radius: var(--radius-kartu); }
+.auth-kartu h1 { font-size: clamp(1.75rem, 1.2rem + 2.4vw, 2.5rem); margin-bottom: .35em; }
+.auth-kartu .pengantar { font-size: 1.0625rem; margin-bottom: 1.5rem; }
+.auth-kaki { margin: 1.4rem 0 0; font-size: .9375rem; }
+
+/* Pesan galat / info / sukses (datar, tanpa bayangan) */
+.pesan { margin: 0 0 1.1rem; padding: .85rem 1rem; border-radius: var(--radius-kecil); border: 1px solid var(--garis-kuat); font-size: .9375rem; line-height: 1.55; }
+.pesan-galat  { border-color: var(--jingga); color: var(--jingga); }
+.pesan-info   { border-color: var(--biru); color: var(--teks-isi); }
+.pesan-sukses { border-color: var(--biru); background: var(--permukaan); color: var(--teks-isi); }
+.pesan[hidden] { display: none; }
+
+/* Pilihan jenis pengguna: tiga pil */
+.pilihan { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; padding: 0; border: 0; }
+.pilihan legend { padding: 0; margin-bottom: .4rem; font-family: var(--font-judul); font-size: .875rem; font-weight: 500; color: var(--biru); }
+.pilihan label { position: relative; cursor: pointer; }
+.pilihan input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; cursor: pointer; }
+.pilihan span {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.2rem; border-radius: 999px;
+  border: 1.5px solid var(--garis-kuat); color: var(--biru); font-family: var(--font-judul); font-size: .9375rem; font-weight: 500;
+  transition: border-color .18s, color .18s, background-color .18s;
+}
+.pilihan input:checked + span { border-color: var(--jingga); color: var(--malam); background: var(--jingga); }
+.pilihan input:focus-visible + span { outline: 2px solid var(--jingga); outline-offset: 3px; }
+
+/* Isian password + tombol lihat */
+.isian-gabung { position: relative; }
+.isian-gabung .isian { padding-right: 6.5rem; }
+.tombol-teks { position: absolute; top: 50%; right: .5rem; transform: translateY(-50%); min-height: 36px; padding: 0 .7rem; background: transparent; border: 0; border-radius: 8px; color: var(--biru); font-family: var(--font-judul); font-size: .8125rem; font-weight: 600; cursor: pointer; }
+.tombol-teks:hover { color: var(--jingga); }
+.bantuan { margin: 0; font-size: .8125rem; line-height: 1.5; }
+.kolom[hidden] { display: none; }
+
+/* Kerangka dashboard */
+.dashboard-kepala { padding-block: clamp(1.75rem, 5vw, 3rem) 1.5rem; }
+.dashboard-kepala h1 { font-size: clamp(1.75rem, 1.2rem + 2.6vw, 2.75rem); margin-bottom: .3em; }
+.dashboard-kepala p { margin: 0; }
+.bagian-dashboard { padding-block: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--garis); }
+.bagian-dashboard h2 { font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.25rem); }

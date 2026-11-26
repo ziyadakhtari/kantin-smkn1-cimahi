@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090A10">
+  <title>Daftar pembeli | Kantin SMK Negeri 1 Cimahi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tema.css">
+  <link rel="stylesheet" href="css/komponen.css">
+  <link rel="stylesheet" href="css/halaman.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wadah header-isi">
+      <a class="merek" href="index.html" aria-label="Beranda Kantin SMK Negeri 1 Cimahi">
+        <span class="logo-slot" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
+        </span>
+        <span class="merek-teks">
+          <strong>Kantin SMKN 1 Cimahi</strong>
+          <span>Pesan online, ambil di kantin</span>
+        </span>
+      </a>
+      <a class="tombol tombol-garis tombol-kecil" href="index.html">Beranda</a>
+    </div>
+  </header>
+
+  <main class="latar-bata auth-halaman">
+    <div class="wadah">
+      <section class="auth-kartu">
+        <h1 data-judul>Daftar sebagai pembeli</h1>
+        <p class="pengantar">Untuk siswa, guru, dan pegawai sekolah. Akunmu langsung aktif setelah mendaftar.</p>
+
+        <div id="pesan" class="pesan" role="alert" hidden></div>
+
+        <form data-form="daftar-pembeli">
+          <div class="kolom">
+            <label for="nama">Nama lengkap</label>
+            <input class="isian" id="nama" name="nama" type="text" autocomplete="name" maxlength="100" required>
+          </div>
+          <div class="kolom">
+            <label for="email">Email</label>
+            <input class="isian" id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+          </div>
+          <div class="kolom">
+            <fieldset class="pilihan">
+              <legend>Saya adalah</legend>
+              <label><input type="radio" name="jenis" value="siswa" required><span>Siswa</span></label>
+              <label><input type="radio" name="jenis" value="guru"><span>Guru</span></label>
+              <label><input type="radio" name="jenis" value="pegawai"><span>Pegawai</span></label>
+            </fieldset>
+          </div>
+          <div class="kolom" id="bagian-kelas" hidden>
+            <label for="kelas">Kelas dan jurusan</label>
+            <input class="isian" id="kelas" name="kelas" type="text" maxlength="50" placeholder="Contoh: XI RPL 1">
+          </div>
+          <div class="kolom">
+            <label for="password">Password</label>
+            <div class="isian-gabung">
+              <input class="isian" id="password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+              <button class="tombol-teks" type="button" data-lihat-password="password" aria-pressed="false">Tampilkan</button>
+            </div>
+          </div>
+          <p class="bantuan" style="margin: -.5rem 0 1.1rem;">Minimal 8 karakter.</p>
+          <div class="kolom">
+            <label for="ulangi">Ulangi password</label>
+            <div class="isian-gabung">
+              <input class="isian" id="ulangi" name="ulangi_password" type="password" autocomplete="new-password" minlength="8" required>
+              <button class="tombol-teks" type="button" data-lihat-password="ulangi" aria-pressed="false">Tampilkan</button>
+            </div>
+          </div>
+          <button class="tombol tombol-utama tombol-penuh" type="submit">Buat akun</button>
+        </form>
+
+        <p class="auth-kaki kecil">Sudah punya akun? <a href="login.html">Masuk</a>. Pemilik kantin? <a href="daftar-penjual.html">Daftar sebagai penjual</a>.</p>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.18.2/dist/motion.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/animasi.js"></script>
+  <script src="js/halaman-auth.js"></script>
+</body>
+</html>

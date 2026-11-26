@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090A10">
+  <title>Dashboard pengelola | Kantin SMK Negeri 1 Cimahi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tema.css">
+  <link rel="stylesheet" href="css/komponen.css">
+  <link rel="stylesheet" href="css/halaman.css">
+</head>
+<body class="memeriksa" data-peran="pengelola">
+  <header class="header header-statis">
+    <div class="wadah header-isi">
+      <a class="merek" href="pengelola.html" aria-label="Dashboard pengelola">
+        <span class="logo-slot" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
+        </span>
+        <span class="merek-teks">
+          <strong>Kantin SMKN 1 Cimahi</strong>
+          <span>Pesan online, ambil di kantin</span>
+        </span>
+      </a>
+      <div class="header-pengguna">
+        <span data-nama-pengguna></span>
+        <button class="tombol tombol-garis tombol-kecil" type="button" data-keluar>Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wadah dashboard-kepala">
+      <h1>Dashboard pengelola</h1>
+      <p class="pengantar" data-sapa>Kelola penjual, akun, dan pengumuman kantin.</p>
+    </div>
+
+    <nav class="tab-nav" data-tab-nav aria-label="Bagian dashboard">
+      <ul>
+      <li><a href="#ringkasan" aria-current="true">Ringkasan</a></li>
+      <li><a href="#persetujuan" aria-current="false">Persetujuan Penjual</a></li>
+      <li><a href="#akun" aria-current="false">Kelola Akun</a></li>
+      <li><a href="#pengumuman" aria-current="false">Pengumuman</a></li>
+      </ul>
+    </nav>
+
+    <section class="bagian-dashboard bagian-tab" id="ringkasan">
+      <div class="wadah">
+        <h2 data-judul>Ringkasan</h2>
+        <div class="kosong">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
+          <h3>Segera hadir</h3>
+          <p>Pesanan hari ini dan kantin yang sedang buka. Dikerjakan di Tahap 5.</p>
+        </div>
+      </div>
+    </section>
+    <section class="bagian-dashboard bagian-tab" id="persetujuan">
+      <div class="wadah">
+        <h2 data-judul>Persetujuan Penjual</h2>
+        <div class="kosong">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
+          <h3>Segera hadir</h3>
+          <p>Setujui atau tolak pendaftaran penjual baru. Dikerjakan di Tahap 5.</p>
+        </div>
+      </div>
+    </section>
+    <section class="bagian-dashboard bagian-tab" id="akun">
+      <div class="wadah">
+        <h2 data-judul>Kelola Akun</h2>
+        <div class="kosong">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
+          <h3>Segera hadir</h3>
+          <p>Daftar penjual dan pembeli, aktifkan atau nonaktifkan akun. Dikerjakan di Tahap 5.</p>
+        </div>
+      </div>
+    </section>
+    <section class="bagian-dashboard bagian-tab" id="pengumuman">
+      <div class="wadah">
+        <h2 data-judul>Pengumuman</h2>
+        <div class="kosong">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
+          <h3>Segera hadir</h3>
+          <p>Pengumuman singkat untuk halaman utama pembeli. Dikerjakan di Tahap 5.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.18.2/dist/motion.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard-umum.js"></script>
+  <script src="js/animasi.js"></script>
+  <script src="js/scrollspy.js"></script>
+</body>
+</html>
