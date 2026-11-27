@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090A10">
+  <title>Masuk | Kantin SMK Negeri 1 Cimahi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tema.css">
+  <link rel="stylesheet" href="css/komponen.css">
+  <link rel="stylesheet" href="css/halaman.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wadah header-isi">
+      <a class="merek" href="index.html" aria-label="Beranda Kantin SMK Negeri 1 Cimahi">
+        <span class="logo-slot" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
+        </span>
+        <span class="merek-teks">
+          <strong>Kantin SMKN 1 Cimahi</strong>
+          <span>Pesan online, ambil di kantin</span>
+        </span>
+      </a>
+      <a class="tombol tombol-garis tombol-kecil" href="index.html">Beranda</a>
+    </div>
+  </header>
+
+  <main class="latar-login auth-halaman">
+    <div class="wadah">
+      <section class="auth-kartu">
+        <h1 data-judul>Masuk</h1>
+        <p class="pengantar">Masuk dengan email dan password akunmu.</p>
+
+        <div id="pesan" class="pesan" role="alert" hidden></div>
+
+        <form data-form="masuk">
+          <div class="kolom">
+            <label for="email">Email</label>
+            <input class="isian" id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+          </div>
+          <div class="kolom">
+            <label for="password">Password</label>
+            <div class="isian-gabung">
+              <input class="isian" id="password" name="password" type="password" autocomplete="current-password" required>
+              <button class="tombol-teks" type="button" data-lihat-password="password" aria-pressed="false">Tampilkan</button>
+            </div>
+          </div>
+          <button class="tombol tombol-utama tombol-penuh" type="submit">Masuk</button>
+        </form>
+
+        <p class="auth-kaki kecil">Belum punya akun? <a href="daftar-pembeli.html">Daftar sebagai pembeli</a> atau <a href="daftar-penjual.html">daftar sebagai penjual</a>.</p>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.18.2/dist/motion.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/animasi.js"></script>
+  <script src="js/halaman-auth.js"></script>
+</body>
+</html>
