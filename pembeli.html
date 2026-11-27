@@ -43,7 +43,7 @@
       <ul>
       <li><a href="#kantin" aria-current="true">Kantin dan Menu</a></li>
       <li><a href="#keranjang" aria-current="false">Keranjang <span class="badge-angka" id="badge-keranjang" hidden>0</span></a></li>
-      <li><a href="#pesanan" aria-current="false">Pesanan Aktif</a></li>
+      <li><a href="#pesanan" aria-current="false">Pesanan Aktif <span class="badge-angka" id="badge-pesanan" hidden>0</span></a></li>
       <li><a href="#riwayat" aria-current="false">Riwayat</a></li>
       <li><a href="#profil" aria-current="false">Profil</a></li>
       </ul>
@@ -107,20 +107,22 @@
     <section class="bagian-dashboard bagian-tab" id="pesanan">
       <div class="wadah">
         <h2 data-judul>Pesanan Aktif</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Status pesanan yang sedang berjalan. Dikerjakan di Tahap 8.</p>
+        <div id="pesan-pesanan" class="pesan" role="status" hidden></div>
+        <div id="daftar-aktif">
+          <div class="skeleton" style="height: 200px; max-width: 680px;" aria-hidden="true"></div>
         </div>
       </div>
     </section>
     <section class="bagian-dashboard bagian-tab" id="riwayat">
       <div class="wadah">
         <h2 data-judul>Riwayat</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Semua pesanan yang pernah kamu buat. Dikerjakan di Tahap 8.</p>
+        <p class="kecil">Pesanan yang sudah selesai atau dibatalkan.</p>
+        <div id="pesan-riwayat" class="pesan" role="alert" hidden></div>
+        <div id="daftar-riwayat" class="daftar">
+          <div class="skeleton" style="height: 72px; border-radius: 0;" aria-hidden="true"></div>
+        </div>
+        <div class="baris-aksi baris-aksi-kiri muat-lagi">
+          <button class="tombol tombol-garis" type="button" id="tombol-muat-lagi" hidden>Muat lebih banyak</button>
         </div>
       </div>
     </section>
@@ -169,5 +171,6 @@
   <script src="js/scrollspy.js"></script>
   <script src="js/alat.js"></script>
   <script src="js/pembeli.js"></script>
+  <script src="js/pesanan-pembeli.js"></script>
 </body>
 </html>
