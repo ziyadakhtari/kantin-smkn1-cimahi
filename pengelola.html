@@ -17,11 +17,11 @@
     <div class="wadah header-isi">
       <a class="merek" href="pengelola.html" aria-label="Dashboard pengelola">
         <span class="logo-slot" aria-hidden="true">
-          <img src="aset/logo-smkn1-cimahi.png" alt="Logo SMK Negeri 1 Cimahi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
         </span>
         <span class="merek-teks">
           <strong>Kantin SMKN 1 Cimahi</strong>
-          <span>Pesan online, ambil di kantin</span>
+          <span>Pengelola</span>
         </span>
       </a>
       <div class="header-pengguna">
@@ -39,50 +39,94 @@
 
     <nav class="tab-nav" data-tab-nav aria-label="Bagian dashboard">
       <ul>
-      <li><a href="#ringkasan" aria-current="true">Ringkasan</a></li>
-      <li><a href="#persetujuan" aria-current="false">Persetujuan Penjual</a></li>
-      <li><a href="#akun" aria-current="false">Kelola Akun</a></li>
-      <li><a href="#pengumuman" aria-current="false">Pengumuman</a></li>
+        <li><a href="#ringkasan" aria-current="true">Ringkasan</a></li>
+        <li><a href="#persetujuan" aria-current="false">Persetujuan Penjual <span class="badge-angka" id="badge-menunggu" hidden>0</span></a></li>
+        <li><a href="#akun" aria-current="false">Kelola Akun</a></li>
+        <li><a href="#pengumuman-bagian" aria-current="false">Pengumuman</a></li>
       </ul>
     </nav>
 
+    <!-- ================= RINGKASAN ================= -->
     <section class="bagian-dashboard bagian-tab" id="ringkasan">
       <div class="wadah">
-        <h2 data-judul>Ringkasan</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Pesanan hari ini dan kantin yang sedang buka. Dikerjakan di Tahap 5.</p>
+        <div class="kepala-bagian">
+          <h2 data-judul>Ringkasan</h2>
+          <button class="tombol tombol-garis tombol-kecil" type="button" data-muat-ulang>Muat ulang</button>
+        </div>
+        <div id="pesan-ringkasan" class="pesan" role="alert" hidden></div>
+
+        <div class="statistik">
+          <div><span class="statistik-angka" id="stat-pesanan">-</span><span class="statistik-label">Pesanan hari ini di semua kantin</span></div>
+          <div><span class="statistik-angka" id="stat-buka">-</span><span class="statistik-label">Kantin yang sedang buka</span></div>
+          <div id="kotak-menunggu"><span class="statistik-angka" id="stat-menunggu">-</span><span class="statistik-label">Pendaftaran menunggu persetujuan</span></div>
+        </div>
+
+        <h3 class="sub-judul">Kantin hari ini</h3>
+        <div class="grid-kartu" id="daftar-ringkasan">
+          <div class="skeleton skeleton-kartu" aria-hidden="true"></div><div class="skeleton skeleton-kartu" aria-hidden="true"></div><div class="skeleton skeleton-kartu" aria-hidden="true"></div>
         </div>
       </div>
     </section>
+
+    <!-- ================= PERSETUJUAN ================= -->
     <section class="bagian-dashboard bagian-tab" id="persetujuan">
       <div class="wadah">
-        <h2 data-judul>Persetujuan Penjual</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Setujui atau tolak pendaftaran penjual baru. Dikerjakan di Tahap 5.</p>
+        <div class="kepala-bagian">
+          <h2 data-judul>Persetujuan Penjual</h2>
+        </div>
+        <p>Penjual baru baru bisa berjualan setelah kamu menyetujui pendaftarannya.</p>
+        <div id="pesan-persetujuan" class="pesan" role="alert" hidden></div>
+        <div class="grid-kartu" id="daftar-menunggu">
+          <div class="skeleton skeleton-kartu" aria-hidden="true"></div><div class="skeleton skeleton-kartu" aria-hidden="true"></div>
+        </div>
+
+        <div id="blok-ditolak" hidden>
+          <h3 class="sub-judul">Pernah ditolak</h3>
+          <div class="grid-kartu" id="daftar-ditolak"></div>
         </div>
       </div>
     </section>
+
+    <!-- ================= KELOLA AKUN ================= -->
     <section class="bagian-dashboard bagian-tab" id="akun">
       <div class="wadah">
-        <h2 data-judul>Kelola Akun</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Daftar penjual dan pembeli, aktifkan atau nonaktifkan akun. Dikerjakan di Tahap 5.</p>
+        <div class="kepala-bagian">
+          <h2 data-judul>Kelola Akun</h2>
+        </div>
+        <div id="pesan-akun" class="pesan" role="alert" hidden></div>
+        <div class="alat">
+          <button class="pil" type="button" data-filter-peran="penjual" aria-pressed="true">Penjual</button>
+          <button class="pil" type="button" data-filter-peran="pembeli" aria-pressed="false">Pembeli</button>
+          <label class="sr-only" for="cari-akun">Cari akun</label>
+          <input class="isian" id="cari-akun" type="search" placeholder="Cari nama, email, atau kantin" autocomplete="off">
+        </div>
+        <div id="daftar-akun" class="daftar">
+          <div class="skeleton" style="height: 72px; border-radius: 0;" aria-hidden="true"></div>
         </div>
       </div>
     </section>
-    <section class="bagian-dashboard bagian-tab" id="pengumuman">
+
+    <!-- ================= PENGUMUMAN ================= -->
+    <section class="bagian-dashboard bagian-tab" id="pengumuman-bagian">
       <div class="wadah">
-        <h2 data-judul>Pengumuman</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Pengumuman singkat untuk halaman utama pembeli. Dikerjakan di Tahap 5.</p>
+        <div class="kepala-bagian">
+          <h2 data-judul>Pengumuman</h2>
+        </div>
+        <p>Pengumuman terbaru yang berstatus Tampil muncul di beranda dan di dashboard pembeli.</p>
+        <div id="pesan-pengumuman" class="pesan" role="alert" hidden></div>
+
+        <form class="form-pengumuman" id="form-pengumuman">
+          <div class="kolom">
+            <label for="isi-pengumuman">Isi pengumuman</label>
+            <textarea class="isian" id="isi-pengumuman" maxlength="300" placeholder="Contoh: Kantin tutup hari Jumat karena kegiatan sekolah." required></textarea>
+          </div>
+          <p class="penghitung" id="hitung-huruf">0 / 300</p>
+          <button class="tombol tombol-utama" type="submit">Terbitkan pengumuman</button>
+        </form>
+
+        <h3>Pengumuman sebelumnya</h3>
+        <div id="daftar-pengumuman" class="daftar">
+          <div class="skeleton" style="height: 72px; border-radius: 0;" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -96,6 +140,7 @@
   <script src="js/supabase-client.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/dashboard-umum.js"></script>
+  <script src="js/pengelola.js"></script>
   <script src="js/animasi.js"></script>
   <script src="js/scrollspy.js"></script>
 </body>
