@@ -202,3 +202,40 @@ body.memeriksa main { visibility: hidden; }
 
 /* Dashboard pembeli, penjual, pengelola: tekstur bata menempel di layar saat di-scroll */
 body.latar-dashboard::after { content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none; background: linear-gradient(rgba(9, 10, 16, .76), rgba(9, 10, 16, .76)), url("../aset/tekstur-bata.webp") center / cover no-repeat; }
+
+/* ============================================================
+   Tahap 6: dashboard penjual (kelola menu dan profil kantin)
+   ============================================================ */
+.panel { background: var(--permukaan); border: 1px solid var(--garis); border-radius: var(--radius-kartu); padding: 1.4rem 1.4rem .4rem; margin-bottom: 1.5rem; max-width: 680px; }
+.panel h3 { margin: 0 0 1rem; }
+.panel > .tombol:last-child, .panel > .baris-aksi:last-child { margin-bottom: 1.1rem; }
+.panel > .kecil { margin: -.4rem 0 1rem; }
+.panel > #tombol-hapus-qris-tempat { margin-bottom: 1.1rem; }
+.panel > #tombol-hapus-qris-tempat:empty { margin: 0; }
+
+.baris-dua { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+@media (max-width: 560px) { .baris-dua { grid-template-columns: 1fr; } }
+.baris-aksi-kiri { justify-content: flex-start; margin-bottom: 1.1rem; }
+
+.isian[type="file"] { padding: .55rem .6rem; cursor: pointer; }
+.isian[type="file"]::file-selector-button {
+  margin-right: .8rem; min-height: 32px; padding: 0 .9rem; border: 1.5px solid var(--jingga); border-radius: 999px;
+  background: transparent; color: var(--jingga); font-family: var(--font-judul); font-size: .8125rem; font-weight: 500; cursor: pointer;
+}
+.isian[type="file"]:hover::file-selector-button { background: var(--jingga); color: var(--malam); }
+
+.pratinjau { border: 1px solid var(--garis-kuat); border-radius: var(--radius-kecil); overflow: hidden; background: var(--permukaan-2); max-width: 260px; margin: .2rem 0 .6rem; }
+.pratinjau img { display: block; width: 100%; height: auto; max-height: 260px; object-fit: cover; }
+.pratinjau[hidden] { display: none; }
+.pratinjau-qris { max-width: 280px; background: #fff; }
+.pratinjau-qris img { object-fit: contain; }
+
+.status-kantin { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; padding-bottom: 1.4rem; }
+.status-kantin > div { flex: 1 1 260px; }
+.status-judul { margin: 0 0 .25rem; font-family: var(--font-judul); font-size: 1.25rem; font-weight: 600; color: var(--biru); }
+.status-kantin .kecil { margin: 0; }
+
+.aksi-kartu { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .85rem; }
+.header-pengguna .badge { white-space: nowrap; }
+@media (max-width: 560px) { .header-pengguna .badge { display: none; } }
+.kolom > .tombol-kecil { align-self: flex-start; }
