@@ -17,7 +17,7 @@
     <div class="wadah header-isi">
       <a class="merek" href="penjual.html" aria-label="Dashboard penjual">
         <span class="logo-slot" aria-hidden="true">
-          <img src="aset/logo-smkn1-cimahi.png" alt="Logo SMK Negeri 1 Cimahi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
         </span>
         <span class="merek-teks">
           <strong>Kantin SMKN 1 Cimahi</strong>
@@ -25,6 +25,7 @@
         </span>
       </a>
       <div class="header-pengguna">
+        <span class="badge badge-batal" id="badge-status-kantin">Memuat...</span>
         <span data-nama-pengguna></span>
         <button class="tombol tombol-garis tombol-kecil" type="button" data-keluar>Keluar</button>
       </div>
@@ -58,11 +59,66 @@
     </section>
     <section class="bagian-dashboard bagian-tab" id="kelola-menu">
       <div class="wadah">
-        <h2 data-judul>Kelola Menu</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Tambah, ubah, dan hapus menu, foto, harga, dan stok. Dikerjakan di Tahap 6.</p>
+        <div class="kepala-bagian">
+          <h2 data-judul>Kelola Menu</h2>
+          <button class="tombol tombol-utama" type="button" id="tombol-tambah-menu">Tambah menu</button>
+        </div>
+        <div id="pesan-menu" class="pesan" role="status" hidden></div>
+
+        <form class="panel form-menu" id="form-menu" hidden novalidate>
+          <h3 id="judul-form-menu">Tambah menu</h3>
+          <div id="pesan-form-menu" class="pesan" role="alert" hidden></div>
+
+          <div class="kolom">
+            <label for="menu-nama">Nama menu</label>
+            <input class="isian" id="menu-nama" type="text" maxlength="80" placeholder="Contoh: Nasi goreng" autocomplete="off">
+          </div>
+          <div class="kolom">
+            <label for="menu-deskripsi">Deskripsi (boleh kosong)</label>
+            <textarea class="isian" id="menu-deskripsi" maxlength="200" placeholder="Contoh: Nasi goreng dengan telur dan kerupuk"></textarea>
+          </div>
+          <div class="baris-dua">
+            <div class="kolom">
+              <label for="menu-harga">Harga (Rp)</label>
+              <input class="isian" id="menu-harga" type="number" inputmode="numeric" min="0" step="1" placeholder="10000">
+            </div>
+            <div class="kolom">
+              <label for="menu-stok">Stok (kosongkan jika tidak dibatasi)</label>
+              <input class="isian" id="menu-stok" type="number" inputmode="numeric" min="0" step="1" placeholder="Tidak dibatasi">
+            </div>
+          </div>
+          <div class="kolom">
+            <fieldset class="pilihan">
+              <legend>Kategori</legend>
+              <label><input type="radio" name="kategori" value="makanan_berat" checked><span>Makanan berat</span></label>
+              <label><input type="radio" name="kategori" value="jajanan"><span>Jajanan</span></label>
+              <label><input type="radio" name="kategori" value="minuman"><span>Minuman</span></label>
+            </fieldset>
+          </div>
+          <div class="kolom">
+            <label for="berkas-foto">Foto menu (JPG, PNG, atau WebP)</label>
+            <input class="isian" id="berkas-foto" type="file" accept="image/jpeg,image/png,image/webp">
+            <div class="pratinjau" id="pratinjau-foto" hidden>
+              <img alt="Pratinjau foto menu">
+            </div>
+            <button class="tombol tombol-garis tombol-kecil" type="button" id="tombol-hapus-foto" hidden>Hapus foto</button>
+          </div>
+
+          <div class="baris-aksi baris-aksi-kiri">
+            <button class="tombol tombol-utama" type="submit" id="tombol-simpan-menu">Simpan menu</button>
+            <button class="tombol tombol-garis" type="button" id="tombol-batal-menu">Batal</button>
+          </div>
+        </form>
+
+        <div class="alat" role="group" aria-label="Saring menu menurut kategori">
+          <button class="pil" type="button" data-filter-kategori="semua" aria-pressed="true">Semua</button>
+          <button class="pil" type="button" data-filter-kategori="makanan_berat" aria-pressed="false">Makanan berat</button>
+          <button class="pil" type="button" data-filter-kategori="jajanan" aria-pressed="false">Jajanan</button>
+          <button class="pil" type="button" data-filter-kategori="minuman" aria-pressed="false">Minuman</button>
+        </div>
+
+        <div id="daftar-menu">
+          <div class="skeleton" style="height: 240px;" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -79,10 +135,40 @@
     <section class="bagian-dashboard bagian-tab" id="profil-kantin">
       <div class="wadah">
         <h2 data-judul>Profil Kantin</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Nama kantin, deskripsi, QRIS, dan tombol buka atau tutup. Dikerjakan di Tahap 6.</p>
+        <div id="pesan-profil" class="pesan" role="status" hidden></div>
+
+        <div class="panel status-kantin">
+          <div>
+            <p class="status-judul" id="teks-status">Memuat status...</p>
+            <p class="kecil" id="teks-status-ket"></p>
+          </div>
+          <button class="tombol tombol-utama" type="button" id="tombol-buka-tutup" disabled>Buka kantin</button>
+        </div>
+
+        <form class="panel" id="form-profil">
+          <h3>Data kantin</h3>
+          <div class="kolom">
+            <label for="profil-nama">Nama kantin</label>
+            <input class="isian" id="profil-nama" type="text" maxlength="80" autocomplete="off">
+          </div>
+          <div class="kolom">
+            <label for="profil-deskripsi">Deskripsi (boleh kosong)</label>
+            <textarea class="isian" id="profil-deskripsi" maxlength="300" placeholder="Contoh: Menjual makanan berat dan minuman dingin."></textarea>
+          </div>
+          <button class="tombol tombol-utama" type="submit">Simpan profil</button>
+        </form>
+
+        <div class="panel">
+          <h3>QRIS pembayaran</h3>
+          <p class="kecil" id="ket-qris"></p>
+          <div class="pratinjau pratinjau-qris" id="pratinjau-qris" hidden>
+            <img alt="QRIS kantin">
+          </div>
+          <div class="kolom">
+            <label for="berkas-qris">Unggah gambar QRIS (JPG, PNG, atau WebP)</label>
+            <input class="isian" id="berkas-qris" type="file" accept="image/jpeg,image/png,image/webp">
+          </div>
+          <div id="tombol-hapus-qris-tempat"></div>
         </div>
       </div>
     </section>
@@ -98,5 +184,7 @@
   <script src="js/dashboard-umum.js"></script>
   <script src="js/animasi.js"></script>
   <script src="js/scrollspy.js"></script>
+  <script src="js/alat.js"></script>
+  <script src="js/penjual.js"></script>
 </body>
 </html>
