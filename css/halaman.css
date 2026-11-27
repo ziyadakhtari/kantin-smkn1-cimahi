@@ -290,3 +290,29 @@ body.latar-dashboard::after { content: ""; position: fixed; inset: 0; z-index: -
 #hasil-pesanan .pratinjau { margin-bottom: 1rem; }
 #form-profil-pembeli > .tombol { margin-bottom: 1.1rem; }
 .kartu-isi h3, .kartu-isi p { overflow-wrap: anywhere; }
+
+/* ============================================================
+   Tahap 8: pesanan aktif dan riwayat (pembeli)
+   ============================================================ */
+.panel-pesanan { padding-bottom: 1.4rem; }
+.panel-pesanan.is-siap { border-color: var(--jingga); }
+.panel-pesanan .tiket { margin-bottom: 1.5rem; }
+.panel-pesanan .alur { margin-bottom: 1.1rem; }
+.status-ket { margin: 0 0 1.1rem; font-size: 1rem; }
+.is-siap .status-ket { color: var(--jingga); font-family: var(--font-judul); font-weight: 500; }
+.panel-pesanan .baris-aksi { margin-top: .9rem; }
+.panel-pesanan .baris-aksi .kecil { margin: 0; }
+
+.daftar-item { list-style: none; margin: 0 0 .9rem; padding: 0; border-top: 1px solid var(--garis); }
+.daftar-item li { display: flex; justify-content: space-between; gap: 1rem; padding: .55rem 0; border-bottom: 1px solid var(--garis); font-size: .9375rem; overflow-wrap: anywhere; }
+.daftar-item li span:last-child { flex: none; }
+.daftar-item-total { font-family: var(--font-judul); font-weight: 600; color: var(--biru); }
+.daftar-item-total span:last-child { color: var(--jingga); }
+
+#riwayat .daftar { max-width: 780px; }
+.baris-riwayat .detail-pesanan { grid-column: 1 / -1; padding-top: .4rem; }
+.baris-riwayat .detail-pesanan[hidden] { display: none; }
+.baris-riwayat .detail-pesanan .daftar-item { margin-bottom: .5rem; }
+.muat-lagi { margin-top: 1rem; }
+.muat-lagi [hidden] { display: none; }
+@media (max-width: 420px) { .alur li { font-size: .6875rem; } }
