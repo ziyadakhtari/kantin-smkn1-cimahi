@@ -365,6 +365,7 @@
           simpanKeranjang();
           $('catatan-pesanan').value = ''; $('hitung-catatan').textContent = '0 / 300';
           tampilkanTiket(kantinSaat, hasil, metode.value);
+          document.dispatchEvent(new CustomEvent('pesanan-dibuat'));     // bagian Pesanan Aktif ikut menyegarkan diri
           return muatData(false).then(function () { Alat.gulirKe($('keranjang')); });
         }, function (g) {
           sedangKirim = false; kirim.textContent = 'Kirim pesanan';
