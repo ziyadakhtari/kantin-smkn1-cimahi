@@ -239,3 +239,54 @@ body.latar-dashboard::after { content: ""; position: fixed; inset: 0; z-index: -
 .header-pengguna .badge { white-space: nowrap; }
 @media (max-width: 560px) { .header-pengguna .badge { display: none; } }
 .kolom > .tombol-kecil { align-self: flex-start; }
+
+/* ============================================================
+   Tahap 7: dashboard pembeli (katalog, keranjang, checkout, profil)
+   ============================================================ */
+.alat[hidden] { display: none; }
+
+.pilih-kantin { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); margin-bottom: 1.5rem; }
+.kartu-kantin {
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem; min-height: 64px; padding: .9rem 1.1rem; text-align: left;
+  background: var(--permukaan); border: 1.5px solid var(--garis); border-radius: var(--radius-kartu); color: var(--biru); cursor: pointer;
+  font-family: var(--font-judul); font-size: 1rem; transition: border-color .18s;
+}
+.kartu-kantin strong { font-weight: 600; overflow-wrap: anywhere; }
+.kartu-kantin:hover { border-color: var(--garis-kuat); }
+.kartu-kantin[aria-pressed="true"] { border-color: var(--jingga); }
+.kartu-kantin:focus-visible { outline: 2px solid var(--jingga); outline-offset: 3px; }
+
+.info-kantin { margin-bottom: 1.1rem; }
+.info-kantin-kepala { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; margin-bottom: .6rem; }
+.info-kantin-kepala h3 { margin: 0; }
+.info-kantin .kecil { margin: 0 0 .75rem; max-width: 60ch; }
+.info-kantin .pesan { margin-bottom: 0; }
+
+.aksi-menu { display: flex; align-items: center; }
+.stok-tipis { color: var(--jingga); }
+
+.stepper { display: inline-flex; align-items: center; gap: .55rem; }
+.stepper-angka { min-width: 2ch; text-align: center; font-family: var(--font-judul); font-size: 1rem; font-weight: 600; color: var(--biru); }
+.tombol-bulat {
+  display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; padding: 0;
+  border: 1.5px solid var(--jingga); background: transparent; color: var(--jingga);
+  font-family: var(--font-judul); font-size: 1.25rem; font-weight: 600; line-height: 1; cursor: pointer; transition: background-color .18s, color .18s;
+}
+.tombol-bulat:hover:not(:disabled) { background: var(--jingga); color: var(--malam); }
+.tombol-bulat:disabled { border-color: var(--garis-kuat); color: var(--teks-isi); opacity: .5; cursor: not-allowed; }
+.tombol-bulat:focus-visible { outline: 2px solid var(--jingga); outline-offset: 3px; }
+
+#isi-keranjang .daftar { margin-bottom: 1.5rem; max-width: 680px; }
+#isi-keranjang .kosong .tombol { margin-top: 1rem; }
+.baris-keranjang .baris-aksi { gap: .75rem; }
+.total-baris { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: .9rem 0; margin-bottom: .6rem; border-top: 1px solid var(--garis); border-bottom: 1px solid var(--garis); font-family: var(--font-judul); color: var(--biru); }
+.total-baris strong { font-size: 1.5rem; font-weight: 700; color: var(--jingga); }
+.ket-kirim { color: var(--jingga); min-height: 0; }
+.ket-kirim:empty { display: none; }
+#form-checkout .tombol-utama { margin-bottom: 1.1rem; }
+#form-checkout .penghitung { margin: .2rem 0 0; }
+#hasil-pesanan { padding-bottom: 1.4rem; }
+#hasil-pesanan .tiket { margin-bottom: 1rem; }
+#hasil-pesanan .pratinjau { margin-bottom: 1rem; }
+#form-profil-pembeli > .tombol { margin-bottom: 1.1rem; }
+.kartu-isi h3, .kartu-isi p { overflow-wrap: anywhere; }
