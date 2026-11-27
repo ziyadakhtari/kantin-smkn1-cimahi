@@ -17,7 +17,7 @@
     <div class="wadah header-isi">
       <a class="merek" href="pembeli.html" aria-label="Dashboard pembeli">
         <span class="logo-slot" aria-hidden="true">
-          <img src="aset/logo-smkn1-cimahi.png" alt="Logo SMK Negeri 1 Cimahi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
         </span>
         <span class="merek-teks">
           <strong>Kantin SMKN 1 Cimahi</strong>
@@ -42,7 +42,7 @@
     <nav class="tab-nav" data-tab-nav aria-label="Bagian dashboard">
       <ul>
       <li><a href="#kantin" aria-current="true">Kantin dan Menu</a></li>
-      <li><a href="#keranjang" aria-current="false">Keranjang</a></li>
+      <li><a href="#keranjang" aria-current="false">Keranjang <span class="badge-angka" id="badge-keranjang" hidden>0</span></a></li>
       <li><a href="#pesanan" aria-current="false">Pesanan Aktif</a></li>
       <li><a href="#riwayat" aria-current="false">Riwayat</a></li>
       <li><a href="#profil" aria-current="false">Profil</a></li>
@@ -52,21 +52,56 @@
     <section class="bagian-dashboard bagian-tab" id="kantin">
       <div class="wadah">
         <h2 data-judul>Kantin dan Menu</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Daftar kantin yang sedang buka beserta menunya. Dikerjakan di Tahap 7.</p>
+        <div id="pesan-katalog" class="pesan" role="alert" hidden></div>
+        <div id="peringatan-kantin" class="pesan pesan-info" role="alert" hidden></div>
+
+        <div id="daftar-kantin" class="pilih-kantin">
+          <div class="skeleton" style="height: 64px;" aria-hidden="true"></div>
         </div>
+
+        <div id="info-kantin" class="info-kantin" hidden></div>
+
+        <div class="alat" id="alat-filter" role="group" aria-label="Saring menu menurut kategori" hidden>
+          <button class="pil" type="button" data-filter-kategori="semua" aria-pressed="true">Semua</button>
+          <button class="pil" type="button" data-filter-kategori="makanan_berat" aria-pressed="false">Makanan berat</button>
+          <button class="pil" type="button" data-filter-kategori="jajanan" aria-pressed="false">Jajanan</button>
+          <button class="pil" type="button" data-filter-kategori="minuman" aria-pressed="false">Minuman</button>
+        </div>
+
+        <div id="daftar-menu-pembeli"></div>
       </div>
     </section>
     <section class="bagian-dashboard bagian-tab" id="keranjang">
       <div class="wadah">
         <h2 data-judul>Keranjang</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Keranjang belanja dan checkout. Dikerjakan di Tahap 7.</p>
-        </div>
+        <div id="pesan-keranjang" class="pesan" role="alert" hidden></div>
+        <div id="hasil-pesanan" class="panel" hidden></div>
+
+        <div id="isi-keranjang"></div>
+
+        <form class="panel" id="form-checkout" hidden>
+          <h3>Pembayaran</h3>
+          <div class="kolom">
+            <fieldset class="pilihan">
+              <legend>Cara bayar</legend>
+              <label><input type="radio" name="metode" value="cash" checked><span>Cash</span></label>
+              <label><input type="radio" name="metode" value="qris"><span>QRIS</span></label>
+            </fieldset>
+            <p class="kecil" id="ket-qris-bayar"></p>
+          </div>
+          <div class="kolom">
+            <label for="catatan-pesanan">Catatan untuk penjual (boleh kosong)</label>
+            <textarea class="isian" id="catatan-pesanan" maxlength="300" placeholder="Contoh: Tidak pakai sambal"></textarea>
+            <p class="penghitung" id="hitung-catatan">0 / 300</p>
+          </div>
+          <div class="total-baris">
+            <span>Total</span>
+            <strong id="total-keranjang">Rp0</strong>
+          </div>
+          <p class="kecil">Total akhir dihitung ulang oleh sistem dengan harga terbaru. Kamu membayar di kantin saat mengambil pesanan.</p>
+          <p class="kecil ket-kirim" id="ket-kirim"></p>
+          <button class="tombol tombol-utama" type="submit" id="tombol-kirim-pesanan">Kirim pesanan</button>
+        </form>
       </div>
     </section>
     <section class="bagian-dashboard bagian-tab" id="pesanan">
@@ -92,11 +127,31 @@
     <section class="bagian-dashboard bagian-tab" id="profil">
       <div class="wadah">
         <h2 data-judul>Profil</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Data akunmu. Dikerjakan di Tahap 7.</p>
-        </div>
+        <div id="pesan-profil-pembeli" class="pesan" role="status" hidden></div>
+        <form class="panel" id="form-profil-pembeli" novalidate>
+          <h3>Data akun</h3>
+          <div class="kolom">
+            <label for="prof-nama">Nama</label>
+            <input class="isian" id="prof-nama" type="text" maxlength="80" autocomplete="name">
+          </div>
+          <div class="kolom">
+            <label for="prof-hp">Nomor HP (boleh kosong)</label>
+            <input class="isian" id="prof-hp" type="tel" inputmode="tel" maxlength="16" autocomplete="tel">
+          </div>
+          <div class="kolom">
+            <fieldset class="pilihan">
+              <legend>Saya adalah</legend>
+              <label><input type="radio" name="jenis" value="siswa"><span>Siswa</span></label>
+              <label><input type="radio" name="jenis" value="guru"><span>Guru</span></label>
+              <label><input type="radio" name="jenis" value="pegawai"><span>Pegawai</span></label>
+            </fieldset>
+          </div>
+          <div class="kolom" id="bagian-kelas-profil" hidden>
+            <label for="prof-kelas">Kelas dan jurusan</label>
+            <input class="isian" id="prof-kelas" type="text" maxlength="40" placeholder="Contoh: XI RPL 1">
+          </div>
+          <button class="tombol tombol-utama" type="submit">Simpan profil</button>
+        </form>
       </div>
     </section>
   </main>
@@ -112,5 +167,7 @@
   <script src="js/pengumuman.js"></script>
   <script src="js/animasi.js"></script>
   <script src="js/scrollspy.js"></script>
+  <script src="js/alat.js"></script>
+  <script src="js/pembeli.js"></script>
 </body>
 </html>
