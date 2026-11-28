@@ -17,7 +17,7 @@
     <div class="wadah header-isi">
       <a class="merek" href="penjual.html" aria-label="Dashboard penjual">
         <span class="logo-slot" aria-hidden="true">
-          <img src="aset/logo-smkn1-cimahi.png" alt="Logo SMK Negeri 1 Cimahi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
         </span>
         <span class="merek-teks">
           <strong>Kantin SMKN 1 Cimahi</strong>
@@ -40,7 +40,7 @@
 
     <nav class="tab-nav" data-tab-nav aria-label="Bagian dashboard">
       <ul>
-      <li><a href="#pesanan-masuk" aria-current="true">Pesanan Masuk</a></li>
+      <li><a href="#pesanan-masuk" aria-current="true">Pesanan Masuk <span class="badge-angka" id="badge-pesanan-masuk" hidden>0</span></a></li>
       <li><a href="#kelola-menu" aria-current="false">Kelola Menu</a></li>
       <li><a href="#laporan" aria-current="false">Laporan Penjualan</a></li>
       <li><a href="#profil-kantin" aria-current="false">Profil Kantin</a></li>
@@ -49,11 +49,32 @@
 
     <section class="bagian-dashboard bagian-tab" id="pesanan-masuk">
       <div class="wadah">
-        <h2 data-judul>Pesanan Masuk</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Pesanan dari pembeli secara realtime. Dikerjakan di Tahap 9.</p>
+        <div class="kepala-bagian">
+          <h2 data-judul>Pesanan Masuk</h2>
+          <div class="alat-notif">
+            <button class="tombol tombol-garis tombol-kecil" type="button" id="tombol-suara" aria-pressed="true">Suara: hidup</button>
+            <button class="tombol tombol-garis tombol-kecil" type="button" id="tombol-coba-suara">Coba suara</button>
+            <button class="tombol tombol-garis tombol-kecil" type="button" id="tombol-notif-layar" hidden>Aktifkan notifikasi layar</button>
+          </div>
+        </div>
+        <p class="kecil ket-suara" id="ket-suara"></p>
+        <div id="pesan-pesanan-masuk" class="pesan" role="alert" hidden></div>
+
+        <div class="kelompok-pesanan kelompok-baru" id="kelompok-baru">
+          <h3 class="sub-judul">Baru <span class="penghitung-kelompok" id="hitung-baru">0</span></h3>
+          <div id="daftar-baru"><div class="skeleton" style="height: 160px; max-width: 420px;" aria-hidden="true"></div></div>
+        </div>
+        <div class="kelompok-pesanan">
+          <h3 class="sub-judul">Sedang diproses <span class="penghitung-kelompok" id="hitung-diproses">0</span></h3>
+          <div id="daftar-diproses"></div>
+        </div>
+        <div class="kelompok-pesanan">
+          <h3 class="sub-judul">Siap diambil <span class="penghitung-kelompok" id="hitung-siap">0</span></h3>
+          <div id="daftar-siap"></div>
+        </div>
+        <div class="kelompok-pesanan kelompok-selesai">
+          <h3 class="sub-judul">Selesai atau dibatalkan hari ini <span class="penghitung-kelompok" id="hitung-selesai">0</span></h3>
+          <div id="daftar-selesai"></div>
         </div>
       </div>
     </section>
@@ -124,11 +145,34 @@
     </section>
     <section class="bagian-dashboard bagian-tab" id="laporan">
       <div class="wadah">
-        <h2 data-judul>Laporan Penjualan</h2>
-        <div class="kosong">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h36v7a3 3 0 0 0 0 6v7H6v-7a3 3 0 0 0 0-6z"/><path d="M30 14v20" stroke-dasharray="3 3"/></svg>
-          <h3>Segera hadir</h3>
-          <p>Laporan harian dan mingguan. Dikerjakan di Tahap 9.</p>
+        <div class="kepala-bagian">
+          <h2 data-judul>Laporan Penjualan</h2>
+          <button class="tombol tombol-garis tombol-kecil" type="button" id="tombol-segarkan-laporan">Muat ulang</button>
+        </div>
+        <p class="kecil">Pendapatan dihitung dari pesanan yang sudah berstatus Selesai.</p>
+        <div id="pesan-laporan" class="pesan" role="alert" hidden></div>
+
+        <div class="alat" role="group" aria-label="Pilih rentang laporan">
+          <button class="pil" type="button" data-rentang="hari-ini" aria-pressed="true">Hari ini</button>
+          <button class="pil" type="button" data-rentang="7-hari" aria-pressed="false">7 hari terakhir</button>
+          <button class="pil" type="button" data-rentang="30-hari" aria-pressed="false">30 hari terakhir</button>
+          <button class="pil" type="button" data-rentang="tanggal" aria-pressed="false">Pilih tanggal</button>
+        </div>
+        <form class="form-rentang" id="form-rentang" hidden>
+          <div class="kolom">
+            <label for="lap-dari">Dari tanggal</label>
+            <input class="isian" id="lap-dari" type="date" required>
+          </div>
+          <div class="kolom">
+            <label for="lap-sampai">Sampai tanggal</label>
+            <input class="isian" id="lap-sampai" type="date" required>
+          </div>
+          <button class="tombol tombol-utama" type="submit">Tampilkan</button>
+        </form>
+        <p class="kecil" id="rentang-teks"></p>
+
+        <div id="isi-laporan">
+          <div class="skeleton" style="height: 120px;" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -174,6 +218,13 @@
     </section>
   </main>
 
+
+  <!-- Banner pesanan baru: muncul hanya saat bagian Pesanan Masuk tidak terlihat -->
+  <div class="banner-pesanan" id="banner-pesanan-baru" role="status" aria-live="polite" hidden>
+    <span id="teks-banner"></span>
+    <button class="tombol tombol-utama tombol-kecil" type="button" id="tombol-lihat-pesanan">Lihat pesanan</button>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
@@ -186,5 +237,7 @@
   <script src="js/scrollspy.js"></script>
   <script src="js/alat.js"></script>
   <script src="js/penjual.js"></script>
+  <script src="js/pesanan-penjual.js"></script>
+  <script src="js/laporan.js"></script>
 </body>
 </html>
