@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090A10">
+  <meta name="robots" content="noindex">
+  <title>Halaman tidak ditemukan | Kantin SMK Negeri 1 Cimahi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Halaman ini memakai gaya sendiri (tidak memuat css/ lain) karena bisa dibuka dari alamat yang salah dan jalur relatif tidak berlaku -->
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 1.5rem;
+      background: #090A10; color: #2F6BFF; font-family: 'Playfair Display', Georgia, serif; font-size: 1.0625rem; line-height: 1.7;
+    }
+    main { width: 100%; max-width: 30rem; padding: 2rem 1.5rem; border: 1.5px solid #1d2a55; border-radius: 14px; background: #0d0f1a; }
+    h1 { margin: 0 0 .75rem; font-family: 'Poppins', system-ui, sans-serif; font-size: 1.75rem; line-height: 1.25; font-weight: 700; }
+    p { margin: 0 0 1.5rem; }
+    a.tombol {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .7rem 1.5rem;
+      font-family: 'Poppins', system-ui, sans-serif; font-weight: 600; font-size: .9375rem; text-decoration: none;
+      color: #090A10; background: #FF7A1A; border-radius: 10px;
+    }
+    a.tombol:hover { background: #ff9140; }
+    a.tombol:focus-visible { outline: 2px solid #2F6BFF; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Halaman tidak ditemukan</h1>
+    <p>Alamat yang kamu buka tidak ada. Mungkin salah ketik, atau halamannya sudah dipindah.</p>
+    <a class="tombol" id="ke-beranda" href="/">Kembali ke beranda</a>
+  </main>
+  <script>
+    // Di GitHub Pages, alamat situs diawali nama repo (…github.io/nama-repo/). Tautan beranda dibuat mengikutinya.
+    (function () {
+      var a = document.getElementById('ke-beranda');
+      var bagian = location.pathname.split('/').filter(Boolean);
+      if (/\.github\.io$/.test(location.hostname) && bagian.length) a.href = '/' + bagian[0] + '/';
+    })();
+  </script>
+</body>
+</html>
