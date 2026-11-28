@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090A10">
+  <link rel="icon" href="aset/favicon.svg" type="image/svg+xml">
+  <meta name="robots" content="noindex">
   <title>Dashboard pembeli | Kantin SMK Negeri 1 Cimahi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,11 +15,13 @@
   <link rel="stylesheet" href="css/halaman.css">
 </head>
 <body class="memeriksa latar-dashboard" data-peran="pembeli">
+  <a class="lewati" href="#isi">Lewati ke isi halaman</a>
   <header class="header header-statis">
     <div class="wadah header-isi">
       <a class="merek" href="pembeli.html" aria-label="Dashboard pembeli">
         <span class="logo-slot" aria-hidden="true">
-          <img src="aset/logo-smkn1-cimahi.png" alt="Logo SMK Negeri 1 Cimahi">
+          <img src="aset/logo-smkn1-cimahi.png" alt="" width="46" height="46" onload="this.parentNode.classList.add('ada-logo')" onerror="this.remove()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
         </span>
         <span class="merek-teks">
           <strong>Kantin SMKN 1 Cimahi</strong>
@@ -33,7 +37,7 @@
 
   <div class="pengumuman" id="pengumuman" hidden><div class="wadah" id="pengumuman-isi"></div></div>
 
-  <main>
+  <main id="isi" tabindex="-1">
     <div class="wadah dashboard-kepala">
       <h1>Dashboard pembeli</h1>
       <p class="pengantar" data-sapa>Pilih menu, kirim pesanan, dan pantau nomor antreanmu.</p>
