@@ -380,6 +380,8 @@
         kantin = h.data;
         isiProfil();
         muatMenu();
+        window.kantinSaya = kantin;                                        // dipakai bagian Pesanan Masuk dan Laporan
+        document.dispatchEvent(new CustomEvent('kantin-siap', { detail: kantin }));
 
         // Stok berubah sendiri saat pembeli memesan: muat ulang otomatis
         try {
