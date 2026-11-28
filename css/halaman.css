@@ -10,13 +10,26 @@
 .merek-teks strong { font-family: var(--font-judul); font-size: 1rem; font-weight: 600; color: var(--biru); }
 .merek-teks span   { font-size: .8125rem; color: var(--teks-isi); }
 
-/* Tempat logo sekolah. Ganti isinya dengan: <img src="aset/logo-smkn1-cimahi.png" alt="Logo SMK Negeri 1 Cimahi"> */
+/* Logo sekolah: simpan file sebagai aset/logo-smkn1-cimahi.png. Kalau file ada, logo tampil otomatis di semua halaman.
+   Kalau belum ada, yang tampil adalah lingkaran pengganti (placeholder). */
 .logo-slot {
   flex: none; display: grid; place-items: center; width: 46px; height: 46px; overflow: hidden;
   border: 1.5px dashed var(--garis-kuat); border-radius: var(--radius-kecil); color: var(--biru);
 }
+.logo-slot > * { grid-area: 1 / 1; }
 .logo-slot img { width: 100%; height: 100%; object-fit: contain; }
 .logo-slot svg { width: 24px; height: 24px; }
+.logo-slot.ada-logo { border-color: transparent; }
+.logo-slot.ada-logo svg { display: none; }
+
+/* Tautan "Lewati ke isi halaman" untuk pengguna keyboard: muncul saat ditekan Tab pertama kali */
+.lewati {
+  position: absolute; left: .75rem; top: -4rem; z-index: 100; padding: .7rem 1.1rem;
+  font-family: var(--font-judul); font-weight: 600; font-size: .9375rem; text-decoration: none;
+  color: var(--malam); background: var(--jingga); border-radius: var(--radius-kecil);
+}
+.lewati:focus { top: .75rem; }
+main:focus { outline: none; }
 
 .nav-utama { display: none; gap: .25rem; }
 .nav-utama a { padding: .5rem .9rem; font-family: var(--font-judul); font-size: .9375rem; font-weight: 500; color: var(--biru); text-decoration: none; border-radius: var(--radius-kecil); }
