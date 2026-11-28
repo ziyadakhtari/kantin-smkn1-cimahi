@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090A10">
+  <link rel="icon" href="aset/favicon.svg" type="image/svg+xml">
   <title>Pelayanan Kantin SMK Negeri 1 Cimahi</title>
   <meta name="description" content="Pesan makanan dan jajanan dari kantin SMK Negeri 1 Cimahi secara online, lalu ambil dengan nomor antrean.">
 
@@ -16,14 +17,14 @@
   <link rel="stylesheet" href="css/halaman.css">
 </head>
 <body>
+  <a class="lewati" href="#isi">Lewati ke isi halaman</a>
 
   <header class="header">
     <div class="wadah header-isi">
       <a class="merek" href="index.html" aria-label="Beranda Kantin SMK Negeri 1 Cimahi">
-        <!-- Tempat logo sekolah: ganti <svg> di bawah dengan
-             <img src="aset/logo-smkn1-cimahi.png" alt="Logo SMK Negeri 1 Cimahi"> -->
         <span class="logo-slot" aria-hidden="true">
-          <img src="aset/logo-smkn1-cimahi.png" alt="Logo SMK Negeri 1 Cimahi">
+          <img src="aset/logo-smkn1-cimahi.png" alt="" width="46" height="46" onload="this.parentNode.classList.add('ada-logo')" onerror="this.remove()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
         </span>
         <span class="merek-teks">
           <strong>Kantin SMKN 1 Cimahi</strong>
@@ -41,7 +42,7 @@
   <!-- Diisi dari tabel pengumuman pada tahap berikutnya -->
   <div class="pengumuman" id="pengumuman" hidden><div class="wadah" id="pengumuman-isi"></div></div>
 
-  <main>
+  <main id="isi" tabindex="-1">
     <section class="hero">
       <div class="wadah hero-isi">
         <div>
@@ -140,6 +141,9 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/motion@11.18.2/dist/motion.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/pengumuman.js"></script>
   <script src="js/animasi.js"></script>
 </body>
 </html>
